@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="myjq.js">
+		</script>
+		<style type="text/myjs">
+			color='red'
+			.size{ color:color }
+		</style>
+		<script type="text/javascript">
+			var str = document.head.innerHTML;//.replace(/\n/g, '');
+			var reg = /<(style)(?:[^>]*)?>([\s\S]*?)(?:<\/\1>[^\"\']|<\/\1>$)/ig;
+			//var str='<style>$()</style>';
+			var res = reg.exec(str); //res[2]
+			console.log(res[2]);
+			var code = res[2];
+			stack = [];
+			stack2 = [];
+			for(var i = 0; i < code.length; i++) {
+				if(code.charCodeAt(i) >= 'a'.charCodeAt(0) && code.charCodeAt(i) <= 'z'.charCodeAt(0) || code.charCodeAt(i) >= 'A'.charCodeAt(0) && code.charCodeAt(i) <= 'Z'.charCodeAt(0) || code.charCodeAt(i) >= '0'.charCodeAt(0) && code.charCodeAt(i) <= '9'.charCodeAt(0) || code.charCodeAt(i) == '_'.charCodeAt(0)) {
+					stack.push(code.charAt(i))
+				} else if(code.charAt(i) == '-' || code.charAt(i) == '+' ||
+					code.charAt(i) == '*' || code.charAt(i) == '/' ||
+					code.charAt(i) == '%' || code.charAt(i) == '^' ||
+					code.charAt(i) == '&' || code.charAt(i) == '&&' ||
+					code.charAt(i) == '|' || code.charAt(i) == '||' ||
+					code.charAt(i) == '=' || code.charAt(i) == '"' ||
+					code.charAt(i) == '\'' || code.charAt(i) == '{' ||
+					code.charAt(i) == '}' || code.charAt(i) == '.'
+					|| code.charAt(i) == ':' || code.charAt(i) == ';'
+					 || code.charAt(i) == '\n') {
+					if(stack.length > 0) {
+						stack2.push(stack.join(''))
+						stack.length = 0;
+					}
+					stack2.push(code.charAt(i));
+				} else {
+					if(stack.length > 0) {
+						stack2.push(stack.join(''))
+						stack.length = 0;
+					}
+				}
+			}
+			//eval(res[2])
+			stack2
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

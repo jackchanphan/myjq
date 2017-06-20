@@ -117,6 +117,6 @@ a.html('fdsafdddfdsafdsafdsafdsaf').odd(function(e, i) {
 	height: '80px',
 	'margin-bottom': '20px'
 });
-console.log($.ajax({
+/*console.log($.ajax({
 	url: 'https://fiddle.jshell.net'
-}))
+}))*/
